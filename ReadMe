@@ -1,5 +1,5 @@
 let a ="";
-for (var i = 0; i < $(".item img").length; i++) {
+for (var i = 0; i < $(".owl-item .item img").length; i++) {
     var url = $(".item img").eq(i).attr("highres");
     let lastIndex = url.lastIndexOf('_mr');
     if (lastIndex !== -1) {
