@@ -91,23 +91,24 @@ public class PaperService {
 
     public String getHTMLContentByURL(String url) {
         try {
-            /* Fetch and parse the HTML document from the URL */
-            org.jsoup.nodes.Document document = Jsoup.connect(url).get();
-
-            // Get all 'h1' tags and convert them into objects
-            Elements h1Tags = document.select("img");
-            for (Element h1 : h1Tags) {
-                System.out.println("H1: " + h1.text());
-            }
+//            /* Fetch and parse the HTML document from the URL */
+//            org.jsoup.nodes.Document document = Jsoup.connect(url).get();
+//
+//            // Get all 'h1' tags and convert them into objects
+//            Elements h1Tags = document.select("img");
+//            for (Element h1 : h1Tags) {
+//                System.out.println("H1: " + h1.text());
+//            }
 
             WebClient webClient = new WebClient();
 
             // Disable JavaScript and CSS (for performance)
             webClient.getOptions().setJavaScriptEnabled(false);
             webClient.getOptions().setCssEnabled(false);
+            webClient.getOptions().setDownloadImages(true);
 
             // Fetch the HTML page from a URL
-            HtmlPage page = webClient.getPage("https://www.example.com");
+            HtmlPage page = webClient.getPage(url);
 
             // Get the page's title
             String title = page.getTitleText();
